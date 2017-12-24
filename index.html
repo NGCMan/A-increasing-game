@@ -1,9 +1,29 @@
+<html>
 <head>
-	<script>
-		points=0
-		setInterval(function(){points++;document.getElementById('number').innerHTML=points},1000)
-	</script>
+<title>A Increasing Game</title>
+<script>
+var points=10;
+var cost = 10;
+var amount = 0;
+function update(set,get){
+document.getElementById(set).innerHTML=get
+}
+function buy() {
+if(cost>points) return 0;
+points=points-cost;
+cost=cost*2;
+amount++;
+update("number",points)
+update("income",amount)
+update("c1",cost)
+update("a1",amount)
+}
+setInterval(function(){points+=amount;document.getElementById("number").innerHTML=points},1000)
+</script>
 </head>
 <body>
-	<div id='number'>0</div>
+You have <span id="number">10</span> points.<br>
+You are getting <span id="income">0</span> points per second.
+<button onclick="buy()" id="b1">First generator<br>Cost: <span id="c1">10</span><br>Amount: <span id="a1">0</span></button>
 </body>
+</html>
